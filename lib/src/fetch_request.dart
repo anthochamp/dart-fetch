@@ -1,6 +1,7 @@
+import 'package:httpx_client/httpx_client.dart';
+
 import 'package:fetch/src/fetch_options.dart';
 import 'package:fetch/src/fetch_response.dart';
-import 'package:httpx_client/httpx_client.dart';
 
 abstract class FetchRequest {
   FetchOptions get options;

@@ -3,12 +3,12 @@ import 'dart:convert';
 
 import 'package:anthochamp_dart_essentials/dart_essentials.dart';
 import 'package:async/async.dart';
+import 'package:httpx_client/httpx_client.dart';
 
 import 'package:fetch/src/builtins/fetch_builtins.dart';
 import 'package:fetch/src/fetch_options.dart';
 import 'package:fetch/src/fetch_response.dart';
 import 'package:fetch/src/fetch_utilities.dart';
-import 'package:httpx_client/httpx_client.dart';
 
 class FetchResponseImpl implements FetchResponse {
   static const defaultContentCharsetName = 'iso-8859-1';

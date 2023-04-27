@@ -1,7 +1,8 @@
 import 'dart:async';
 
-import 'package:fetch/src/fetch_options.dart';
 import 'package:httpx_client/httpx_client.dart';
+
+import 'package:fetch/src/fetch_options.dart';
 
 abstract class FetchResponse {
   FetchOptions get options;

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:async/async.dart';
+import 'package:httpx_client/httpx_client.dart';
 
 import 'package:fetch/src/builtins/fetch_builtins.dart';
 import 'package:fetch/src/fetch_options.dart';
@@ -9,7 +10,6 @@ import 'package:fetch/src/fetch_request.dart';
 import 'package:fetch/src/fetch_response.dart';
 import 'package:fetch/src/fetch_response_impl.dart';
 import 'package:fetch/src/fetch_utilities.dart';
-import 'package:httpx_client/httpx_client.dart';
 
 class FetchRequestImpl implements FetchRequest {
   @override

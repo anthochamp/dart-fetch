@@ -9,14 +9,14 @@ Future<FetchRequest> fetch(
   bool close = false,
 }) async {
   final clientRequest = FetchGlobals().httpxClient.createRequest(
-    uri: options.url,
-    method: options.method,
-    headers: options.headers,
-    realmsCredentials: options.realmsCredentials,
-    maxRedirects: options.maxRedirects,
-    connectionTimeout: options.connectionTimeout,
-    cachePolicy: options.cachePolicy,
-  );
+        uri: options.url,
+        method: options.method,
+        headers: options.headers,
+        realmsCredentials: options.realmsCredentials,
+        maxRedirects: options.maxRedirects,
+        connectionTimeout: options.connectionTimeout,
+        cachePolicy: options.cachePolicy,
+      );
 
   final request = FetchRequestImpl(clientRequest, options: options);
 
