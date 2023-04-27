@@ -9,7 +9,7 @@ environment:
 dependencies:
   anthochamp_dart_essentials:
     git: git@github.com:anthochamp/dart-essentials.git
-  async: ^2.11.0
+  async: ^2.10.0
   freezed_annotation: ^2.2.0
   httpx_client:
     git: git@github.com:anthochamp/dart-httpx-client.git
