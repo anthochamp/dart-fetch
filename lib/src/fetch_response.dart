@@ -1,8 +1,12 @@
+// Copyright 2023, Anthony Champagne. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
 import 'dart:async';
 
-import 'package:httpx_client/httpx_client.dart';
+import 'package:ac_httpx_client/ac_httpx_client.dart';
 
-import 'package:fetch/src/fetch_options.dart';
+import 'fetch_options.dart';
 
 abstract class FetchResponse {
   FetchOptions get options;

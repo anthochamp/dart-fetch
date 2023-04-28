@@ -1,7 +1,11 @@
+// Copyright 2023, Anthony Champagne. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:anthochamp_dart_essentials/dart_essentials.dart';
+import 'package:ac_dart_essentials/ac_dart_essentials.dart';
 
 // converts JsonValue back and forth
 

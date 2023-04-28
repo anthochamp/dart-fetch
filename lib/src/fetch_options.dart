@@ -1,8 +1,12 @@
+// Copyright 2023, Anthony Champagne. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:ac_httpx_client/ac_httpx_client.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:httpx_client/httpx_client.dart';
 
 part 'fetch_options.freezed.dart';
 
@@ -10,7 +14,7 @@ part 'fetch_options.freezed.dart';
 /// Depending on the mime-type, the return type must be String, List<int>, Map<String, String | List<String>>, etc.
 typedef TypedDataEncoder = FutureOr<dynamic> Function(
   dynamic typedData,
-  Type structuredDataType,
+  Type typedDataType,
 );
 
 /// Takes a structured-data from a structured-data decoder and return a typed-data (return type must follow typedDataType arg).

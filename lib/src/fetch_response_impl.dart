@@ -1,14 +1,18 @@
+// Copyright 2023, Anthony Champagne. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:anthochamp_dart_essentials/dart_essentials.dart';
+import 'package:ac_dart_essentials/ac_dart_essentials.dart';
+import 'package:ac_httpx_client/ac_httpx_client.dart';
 import 'package:async/async.dart';
-import 'package:httpx_client/httpx_client.dart';
 
-import 'package:fetch/src/builtins/fetch_builtins.dart';
-import 'package:fetch/src/fetch_options.dart';
-import 'package:fetch/src/fetch_response.dart';
-import 'package:fetch/src/fetch_utilities.dart';
+import 'builtins/fetch_builtins.dart';
+import 'fetch_options.dart';
+import 'fetch_response.dart';
+import 'fetch_utilities.dart';
 
 class FetchResponseImpl implements FetchResponse {
   static const defaultContentCharsetName = 'iso-8859-1';

@@ -1,22 +1,31 @@
-import 'package:fetch/src/fetch_globals.dart';
-import 'package:fetch/src/fetch_options.dart';
-import 'package:fetch/src/fetch_request.dart';
-import 'package:fetch/src/fetch_request_impl.dart';
-import 'package:fetch/src/fetch_response.dart';
+// Copyright 2023, Anthony Champagne. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+import 'package:ac_httpx_client/ac_httpx_client.dart';
+
+import 'fetch_globals.dart';
+import 'fetch_options.dart';
+import 'fetch_request.dart';
+import 'fetch_request_impl.dart';
+import 'fetch_response.dart';
 
 Future<FetchRequest> fetch(
   FetchOptions options, {
+  HttpxClient? httpxClient,
   bool close = false,
 }) async {
-  final clientRequest = FetchGlobals().httpxClient.createRequest(
-        uri: options.url,
-        method: options.method,
-        headers: options.headers,
-        realmsCredentials: options.realmsCredentials,
-        maxRedirects: options.maxRedirects,
-        connectionTimeout: options.connectionTimeout,
-        cachePolicy: options.cachePolicy,
-      );
+  final client = httpxClient ?? FetchGlobals().defaultHttpxClient;
+
+  final clientRequest = client.createRequest(
+    uri: options.url,
+    method: options.method,
+    headers: options.headers,
+    realmsCredentials: options.realmsCredentials,
+    maxRedirects: options.maxRedirects,
+    connectionTimeout: options.connectionTimeout,
+    cachePolicy: options.cachePolicy,
+  );
 
   final request = FetchRequestImpl(clientRequest, options: options);
 
@@ -27,17 +36,32 @@ Future<FetchRequest> fetch(
   return request;
 }
 
+Future<FetchResponse> fetchWithNoData(
+  FetchOptions options, {
+  HttpxClient? httpxClient,
+}) async {
+  final fetchRequest = await fetch(options, httpxClient: httpxClient);
+
+  return fetchRequest.close();
+}
+
 Future<FetchResponse> fetchWithStructuredData(
   FetchOptions options,
-  dynamic structuredData,
-) async {
-  final fetchRequest = await fetch(options);
+  dynamic structuredData, {
+  HttpxClient? httpxClient,
+}) async {
+  final fetchRequest = await fetch(options, httpxClient: httpxClient);
 
   return fetchRequest.writeStructuredData(structuredData);
 }
 
-Future<FetchResponse> fetchWithNoData(FetchOptions options) async {
-  final fetchRequest = await fetch(options);
+Future<FetchResponse> fetchWithTypedData<T>(
+  FetchOptions options,
+  T typedData, {
+  HttpxClient? httpxClient,
+  TypedDataEncoder? encoder,
+}) async {
+  final fetchRequest = await fetch(options, httpxClient: httpxClient);
 
-  return fetchRequest.close();
+  return fetchRequest.writeTypedData(typedData, encoder: encoder);
 }

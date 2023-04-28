@@ -1,8 +1,12 @@
-import 'package:fetch/src/builtins/application_json_coders.dart';
-import 'package:fetch/src/builtins/application_octet_coders.dart';
-import 'package:fetch/src/builtins/application_www_form_url_encoded_coders.dart';
-import 'package:fetch/src/builtins/text_plain_coders.dart';
-import 'package:fetch/src/fetch_options.dart';
+// Copyright 2023, Anthony Champagne. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+import '../fetch_options.dart';
+import 'application_json_coders.dart';
+import 'application_octet_coders.dart';
+import 'application_www_form_url_encoded_coders.dart';
+import 'text_plain_coders.dart';
 
 class FetchBuiltins {
   static final applicationWwwFormUrlencodedCoders =
