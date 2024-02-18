@@ -12,7 +12,7 @@ part of 'fetch_options.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$FetchOptions {
@@ -140,11 +140,11 @@ class _$FetchOptionsCopyWithImpl<$Res, $Val extends FetchOptions>
 }
 
 /// @nodoc
-abstract class _$$_FetchOptionsCopyWith<$Res>
+abstract class _$$FetchOptionsImplCopyWith<$Res>
     implements $FetchOptionsCopyWith<$Res> {
-  factory _$$_FetchOptionsCopyWith(
-          _$_FetchOptions value, $Res Function(_$_FetchOptions) then) =
-      __$$_FetchOptionsCopyWithImpl<$Res>;
+  factory _$$FetchOptionsImplCopyWith(
+          _$FetchOptionsImpl value, $Res Function(_$FetchOptionsImpl) then) =
+      __$$FetchOptionsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -163,11 +163,11 @@ abstract class _$$_FetchOptionsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_FetchOptionsCopyWithImpl<$Res>
-    extends _$FetchOptionsCopyWithImpl<$Res, _$_FetchOptions>
-    implements _$$_FetchOptionsCopyWith<$Res> {
-  __$$_FetchOptionsCopyWithImpl(
-      _$_FetchOptions _value, $Res Function(_$_FetchOptions) _then)
+class __$$FetchOptionsImplCopyWithImpl<$Res>
+    extends _$FetchOptionsCopyWithImpl<$Res, _$FetchOptionsImpl>
+    implements _$$FetchOptionsImplCopyWith<$Res> {
+  __$$FetchOptionsImplCopyWithImpl(
+      _$FetchOptionsImpl _value, $Res Function(_$FetchOptionsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -186,7 +186,7 @@ class __$$_FetchOptionsCopyWithImpl<$Res>
     Object? metadata = freezed,
     Object? connectionTimeout = freezed,
   }) {
-    return _then(_$_FetchOptions(
+    return _then(_$FetchOptionsImpl(
       method: null == method
           ? _value.method
           : method // ignore: cast_nullable_to_non_nullable
@@ -241,8 +241,8 @@ class __$$_FetchOptionsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FetchOptions implements _FetchOptions {
-  const _$_FetchOptions(
+class _$FetchOptionsImpl implements _FetchOptions {
+  const _$FetchOptionsImpl(
       {required this.method,
       required this.url,
       this.headers,
@@ -307,10 +307,10 @@ class _$_FetchOptions implements _FetchOptions {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FetchOptions &&
+            other is _$FetchOptionsImpl &&
             (identical(other.method, method) || other.method == method) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.headers, headers) || other.headers == headers) &&
@@ -354,8 +354,8 @@ class _$_FetchOptions implements _FetchOptions {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FetchOptionsCopyWith<_$_FetchOptions> get copyWith =>
-      __$$_FetchOptionsCopyWithImpl<_$_FetchOptions>(this, _$identity);
+  _$$FetchOptionsImplCopyWith<_$FetchOptionsImpl> get copyWith =>
+      __$$FetchOptionsImplCopyWithImpl<_$FetchOptionsImpl>(this, _$identity);
 }
 
 abstract class _FetchOptions implements FetchOptions {
@@ -371,7 +371,7 @@ abstract class _FetchOptions implements FetchOptions {
       final int? maxRedirects,
       final HttpxCachePolicy? cachePolicy,
       final dynamic metadata,
-      final Duration? connectionTimeout}) = _$_FetchOptions;
+      final Duration? connectionTimeout}) = _$FetchOptionsImpl;
 
   @override
   String get method;
@@ -399,6 +399,6 @@ abstract class _FetchOptions implements FetchOptions {
   Duration? get connectionTimeout;
   @override
   @JsonKey(ignore: true)
-  _$$_FetchOptionsCopyWith<_$_FetchOptions> get copyWith =>
+  _$$FetchOptionsImplCopyWith<_$FetchOptionsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
