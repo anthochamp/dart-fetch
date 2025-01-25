@@ -1,3 +1,7 @@
+## 0.2.1
+
+- Upgrade ac_httpx_client package to 0.2.0
+
 ## 0.2.0
 
 - Upgrade freezed/freezed_annotation packages
