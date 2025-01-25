@@ -8,7 +8,7 @@ environment:
 
 dependencies:
   ac_dart_essentials: ^0.2.1
-  ac_httpx_client: ^0.1.0
+  ac_httpx_client: ^0.2.0
   async: ^2.10.0
   freezed_annotation: ^2.4.4
 
