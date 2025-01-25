@@ -34,7 +34,9 @@ mixin _$FetchOptions {
   dynamic get metadata => throw _privateConstructorUsedError;
   Duration? get connectionTimeout => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FetchOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FetchOptionsCopyWith<FetchOptions> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -70,6 +72,8 @@ class _$FetchOptionsCopyWithImpl<$Res, $Val extends FetchOptions>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FetchOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -170,6 +174,8 @@ class __$$FetchOptionsImplCopyWithImpl<$Res>
       _$FetchOptionsImpl _value, $Res Function(_$FetchOptionsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FetchOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -351,7 +357,9 @@ class _$FetchOptionsImpl implements _FetchOptions {
       const DeepCollectionEquality().hash(metadata),
       connectionTimeout);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FetchOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FetchOptionsImplCopyWith<_$FetchOptionsImpl> get copyWith =>
@@ -397,8 +405,11 @@ abstract class _FetchOptions implements FetchOptions {
   dynamic get metadata;
   @override
   Duration? get connectionTimeout;
+
+  /// Create a copy of FetchOptions
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FetchOptionsImplCopyWith<_$FetchOptionsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
