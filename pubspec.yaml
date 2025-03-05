@@ -1,6 +1,6 @@
 name: ac_fetch
 description: An easy to use HTTP data fetcher with HTTP1/2 and integrated HTTP cache support
-version: 0.2.1
+version: 0.3.0
 repository: https://github.com/anthochamp/dart-fetch.git
 
 environment:
