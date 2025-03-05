@@ -20,10 +20,7 @@ abstract class FetchRequest {
 
   HttpxHeaders get headers;
 
-  Future<void> writeData(
-    List<int> data, {
-    bool ignoreContentEncoding = true,
-  });
+  Future<void> writeData(List<int> data, {bool ignoreContentEncoding = true});
 
   Future<void> writeString(String string);
 

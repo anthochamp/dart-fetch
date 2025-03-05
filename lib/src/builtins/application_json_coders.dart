@@ -10,14 +10,9 @@ import 'package:ac_dart_essentials/ac_dart_essentials.dart';
 // converts JsonValue back and forth
 
 class FetchBuiltinsApplicationJsonCoders {
-  static final compatibleMimeTypes = <String>{
-    'application/json',
-  };
+  static final compatibleMimeTypes = <String>{'application/json'};
 
-  static List<int> encoder(
-    JsonValue structuredData,
-    Encoding charsetEncoding,
-  ) {
+  static List<int> encoder(JsonValue structuredData, Encoding charsetEncoding) {
     if (!['csutf8', 'utf-8'].contains(charsetEncoding.name.toLowerCase())) {
       const converter = JsonEncoder();
 

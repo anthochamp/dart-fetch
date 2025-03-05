@@ -8,14 +8,9 @@ import 'dart:convert';
 // converts String back and forth
 
 class FetchBuiltinsTextPlainCoders {
-  static final compatibleMimeTypes = <String>{
-    'text/',
-  };
+  static final compatibleMimeTypes = <String>{'text/'};
 
-  static List<int> encoder(
-    dynamic structuredData,
-    Encoding charsetEncoding,
-  ) {
+  static List<int> encoder(dynamic structuredData, Encoding charsetEncoding) {
     if (structuredData == null) {
       return [];
     }

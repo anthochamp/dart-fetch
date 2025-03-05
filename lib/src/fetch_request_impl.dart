@@ -19,10 +19,7 @@ class FetchRequestImpl implements FetchRequest {
   @override
   final FetchOptions options;
 
-  FetchRequestImpl(
-    this._clientRequest, {
-    required this.options,
-  });
+  FetchRequestImpl(this._clientRequest, {required this.options});
 
   final HttpxRequest _clientRequest;
   final _closeMemoizer = AsyncMemoizer<FetchResponse>();
@@ -101,10 +98,10 @@ class FetchRequestImpl implements FetchRequest {
 
       structuredDataEncoder =
           FetchUtilities.findBestDataCoder<StructuredDataEncoder>(
-        mimeType: contentMimeType,
-        dataCoders: options.structuredDataEncoders,
-        builtinsDataCoders: FetchBuiltins.structuredDataEncodersPerMimeType,
-      );
+            mimeType: contentMimeType,
+            dataCoders: options.structuredDataEncoders,
+            builtinsDataCoders: FetchBuiltins.structuredDataEncodersPerMimeType,
+          );
       if (structuredDataEncoder == null) {
         throw UnsupportedError(
           'No known structured-data encoder for content type "$contentMimeType"',
@@ -155,19 +152,11 @@ class FetchRequestImpl implements FetchRequest {
       structuredData = await typedDataEncoder(typedData, T);
     }
 
-    return writeStructuredData(
-      structuredData,
-      encoder: structuredDataEncoder,
-    );
+    return writeStructuredData(structuredData, encoder: structuredDataEncoder);
   }
 
   @override
-  Future<FetchResponse> close() => _closeMemoizer.runOnce(
-        () async {
-          return FetchResponseImpl(
-            await _clientRequest.close(),
-            options: options,
-          );
-        },
-      );
+  Future<FetchResponse> close() => _closeMemoizer.runOnce(() async {
+    return FetchResponseImpl(await _clientRequest.close(), options: options);
+  });
 }

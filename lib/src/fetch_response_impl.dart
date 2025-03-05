@@ -20,10 +20,7 @@ class FetchResponseImpl implements FetchResponse {
   @override
   final FetchOptions options;
 
-  FetchResponseImpl(
-    this._clientResponse, {
-    required this.options,
-  }) {
+  FetchResponseImpl(this._clientResponse, {required this.options}) {
     _clientResponse.pipe(_streamController);
   }
 
@@ -57,14 +54,13 @@ class FetchResponseImpl implements FetchResponse {
   String get statusText => _clientResponse.statusText ?? '';
 
   @override
-  Uri get url => _clientResponse.redirects.isEmpty
-      ? options.url
-      : _clientResponse.redirects.last.location;
+  Uri get url =>
+      _clientResponse.redirects.isEmpty
+          ? options.url
+          : _clientResponse.redirects.last.location;
 
   @override
-  Stream<List<int>> getDataStream({
-    bool ignoreContentEncoding = true,
-  }) {
+  Stream<List<int>> getDataStream({bool ignoreContentEncoding = true}) {
     Stream<List<int>> transformedStream;
     if (ignoreContentEncoding) {
       transformedStream = _streamController.stream;
@@ -103,12 +99,11 @@ class FetchResponseImpl implements FetchResponse {
   }
 
   @override
-  Future<String> waitString({
-    Duration? timeout,
-  }) =>
+  Future<String> waitString({Duration? timeout}) =>
       _waitStringMemoizer.runOnce(() {
-        final future =
-            _getCharsetEncoding().decodeStream(_streamController.stream);
+        final future = _getCharsetEncoding().decodeStream(
+          _streamController.stream,
+        );
 
         return timeout == null ? future : future.timeout(timeout);
       });
@@ -137,10 +132,11 @@ class FetchResponseImpl implements FetchResponse {
 
         structuredDataDecoder =
             FetchUtilities.findBestDataCoder<StructuredDataDecoder>(
-          mimeType: contentMimeType,
-          dataCoders: options.structuredDataDecoders,
-          builtinsDataCoders: FetchBuiltins.structuredDataDecodersPerMimeType,
-        );
+              mimeType: contentMimeType,
+              dataCoders: options.structuredDataDecoders,
+              builtinsDataCoders:
+                  FetchBuiltins.structuredDataDecodersPerMimeType,
+            );
         if (structuredDataDecoder == null) {
           throw UnsupportedError(
             'Content type "$contentMimeType" has no known structured-data decoder',

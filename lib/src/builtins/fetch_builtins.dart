@@ -14,52 +14,75 @@ class FetchBuiltins {
 
   static final structuredDataDecodersPerMimeType =
       <String, StructuredDataDecoder>{
-    ...Map.fromEntries(FetchBuiltinsApplicationJsonCoders.compatibleMimeTypes
-        .map((e) => MapEntry<String, StructuredDataDecoder>(
+        ...Map.fromEntries(
+          FetchBuiltinsApplicationJsonCoders.compatibleMimeTypes.map(
+            (e) => MapEntry<String, StructuredDataDecoder>(
               e,
               FetchBuiltinsApplicationJsonCoders.decoder,
-            ))),
-    ...Map.fromEntries(FetchBuiltinsApplicationOctetCoders.compatibleMimeTypes
-        .map((e) => MapEntry<String, StructuredDataDecoder>(
+            ),
+          ),
+        ),
+        ...Map.fromEntries(
+          FetchBuiltinsApplicationOctetCoders.compatibleMimeTypes.map(
+            (e) => MapEntry<String, StructuredDataDecoder>(
               e,
               FetchBuiltinsApplicationOctetCoders.decoder,
-            ))),
-    ...Map.fromEntries(FetchBuiltinsApplicationWwwFormUrlencodedCoders
-        .compatibleMimeTypes
-        .map((e) => MapEntry<String, StructuredDataDecoder>(
+            ),
+          ),
+        ),
+        ...Map.fromEntries(
+          FetchBuiltinsApplicationWwwFormUrlencodedCoders.compatibleMimeTypes
+              .map(
+                (e) => MapEntry<String, StructuredDataDecoder>(
+                  e,
+                  applicationWwwFormUrlencodedCoders.decoder,
+                ),
+              ),
+        ),
+        ...Map.fromEntries(
+          FetchBuiltinsTextPlainCoders.compatibleMimeTypes.map(
+            (e) => MapEntry<String, StructuredDataDecoder>(
               e,
-              applicationWwwFormUrlencodedCoders.decoder,
-            ))),
-    ...Map.fromEntries(FetchBuiltinsTextPlainCoders.compatibleMimeTypes.map(
-      (e) => MapEntry<String, StructuredDataDecoder>(
-        e,
-        FetchBuiltinsTextPlainCoders.decoder,
-      ),
-    )),
-  };
+              FetchBuiltinsTextPlainCoders.decoder,
+            ),
+          ),
+        ),
+      };
 
   static final structuredDataEncodersPerMimeType =
       <String, StructuredDataEncoder>{
-    ...Map.fromEntries(FetchBuiltinsApplicationJsonCoders.compatibleMimeTypes
-        .map((e) => MapEntry<String, StructuredDataEncoder>(
+        ...Map.fromEntries(
+          FetchBuiltinsApplicationJsonCoders.compatibleMimeTypes.map(
+            (e) => MapEntry<String, StructuredDataEncoder>(
               e,
               FetchBuiltinsApplicationJsonCoders.encoder,
-            ))),
-    ...Map.fromEntries(FetchBuiltinsApplicationOctetCoders.compatibleMimeTypes
-        .map((e) => MapEntry<String, StructuredDataEncoder>(
+            ),
+          ),
+        ),
+        ...Map.fromEntries(
+          FetchBuiltinsApplicationOctetCoders.compatibleMimeTypes.map(
+            (e) => MapEntry<String, StructuredDataEncoder>(
               e,
               FetchBuiltinsApplicationOctetCoders.encoder,
-            ))),
-    ...Map.fromEntries(FetchBuiltinsApplicationWwwFormUrlencodedCoders
-        .compatibleMimeTypes
-        .map((e) => MapEntry<String, StructuredDataEncoder>(
-              e,
-              applicationWwwFormUrlencodedCoders.encoder,
-            ))),
-    ...Map.fromEntries(FetchBuiltinsTextPlainCoders.compatibleMimeTypes
-        .map((e) => MapEntry<String, StructuredDataEncoder>(
+            ),
+          ),
+        ),
+        ...Map.fromEntries(
+          FetchBuiltinsApplicationWwwFormUrlencodedCoders.compatibleMimeTypes
+              .map(
+                (e) => MapEntry<String, StructuredDataEncoder>(
+                  e,
+                  applicationWwwFormUrlencodedCoders.encoder,
+                ),
+              ),
+        ),
+        ...Map.fromEntries(
+          FetchBuiltinsTextPlainCoders.compatibleMimeTypes.map(
+            (e) => MapEntry<String, StructuredDataEncoder>(
               e,
               FetchBuiltinsTextPlainCoders.encoder,
-            ))),
-  };
+            ),
+          ),
+        ),
+      };
 }
