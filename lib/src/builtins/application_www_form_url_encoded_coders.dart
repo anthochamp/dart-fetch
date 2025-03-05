@@ -20,37 +20,37 @@ class FetchBuiltinsApplicationWwwFormUrlencodedCoders {
     this.queryComponentEncoding = utf8,
   });
 
-  List<int> encoder(
-    dynamic structuredData,
-    Encoding charsetEncoding,
-  ) {
+  List<int> encoder(dynamic structuredData, Encoding charsetEncoding) {
     if (structuredData == null) {
       return [];
     }
 
-    final queryString =
-        (structuredData as UriQueryParameters).entries.map((fieldValue) {
-      final encodedKey = Uri.encodeQueryComponent(
-        fieldValue.key,
-        encoding: queryComponentEncoding,
-      );
+    final queryString = (structuredData as UriQueryParameters).entries
+        .map((fieldValue) {
+          final encodedKey = Uri.encodeQueryComponent(
+            fieldValue.key,
+            encoding: queryComponentEncoding,
+          );
 
-      List<String> values;
-      if (fieldValue.value is String) {
-        values = [fieldValue.value];
-      } else {
-        values = fieldValue.value;
-      }
+          List<String> values;
+          if (fieldValue.value is String) {
+            values = [fieldValue.value];
+          } else {
+            values = fieldValue.value;
+          }
 
-      final encodedValues = values
-          .map((value) => Uri.encodeQueryComponent(
-                value,
-                encoding: queryComponentEncoding,
-              ))
-          .join(',');
+          final encodedValues = values
+              .map(
+                (value) => Uri.encodeQueryComponent(
+                  value,
+                  encoding: queryComponentEncoding,
+                ),
+              )
+              .join(',');
 
-      return '$encodedKey=$encodedValues';
-    }).join('&');
+          return '$encodedKey=$encodedValues';
+        })
+        .join('&');
 
     return charsetEncoding.encode(queryString);
   }

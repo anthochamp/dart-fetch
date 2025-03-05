@@ -26,18 +26,14 @@ abstract class FetchResponse {
 
   bool get bodyUsed;
 
-  Stream<List<int>> getDataStream({
-    bool ignoreContentEncoding = true,
-  });
+  Stream<List<int>> getDataStream({bool ignoreContentEncoding = true});
 
   Future<List<int>> waitData({
     bool ignoreContentEncoding = true,
     Duration? timeout,
   });
 
-  Future<String> waitString({
-    Duration? timeout,
-  });
+  Future<String> waitString({Duration? timeout});
 
   Future<dynamic> waitStructuredData({
     StructuredDataDecoder? decoder,
