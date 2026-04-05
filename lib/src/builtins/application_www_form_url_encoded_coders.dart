@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: © 2023 - 2024 Anthony Champagne <dev@anthonychampagne.fr>
+// SPDX-FileCopyrightText: © 2023 - 2026 Anthony Champagne <dev@anthonychampagne.fr>
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
@@ -34,9 +34,9 @@ class FetchBuiltinsApplicationWwwFormUrlencodedCoders {
 
           List<String> values;
           if (fieldValue.value is String) {
-            values = [fieldValue.value];
+            values = [fieldValue.value as String];
           } else {
-            values = fieldValue.value;
+            values = (fieldValue.value as Iterable).cast<String>().toList();
           }
 
           final encodedValues = values

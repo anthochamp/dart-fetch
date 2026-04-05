@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: © 2023 - 2024 Anthony Champagne <dev@anthonychampagne.fr>
+// SPDX-FileCopyrightText: © 2023 - 2026 Anthony Champagne <dev@anthonychampagne.fr>
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
@@ -25,8 +25,7 @@ class FetchResponseImpl implements FetchResponse {
   }
 
   final HttpxResponse _clientResponse;
-  // closed by pipe()
-  // ignore: close_sinks
+  // ignore: close_sinks — closed implicitly by HttpxResponse.pipe(); explicit close() would cause a double-close
   final _streamController = StreamController<List<int>>();
   final _waitDataMemoizer = AsyncMemoizer<List<int>>();
   final _waitStringMemoizer = AsyncMemoizer<String>();
@@ -41,7 +40,7 @@ class FetchResponseImpl implements FetchResponse {
   HttpxHeaders get headers => _clientResponse.headers;
 
   @override
-  // ignore: no-magic-number, prefer-correct-identifier-length
+  // ignore: no-magic-number — 200 and 300 are HTTP status range boundaries, not magic numbers
   bool get ok => status >= 200 && status < 300;
 
   @override
@@ -82,8 +81,10 @@ class FetchResponseImpl implements FetchResponse {
   }) {
     if (_waitDataMemoizer.hasRun &&
         _waitDataMemoizerIgnoreContentEncodingArg != ignoreContentEncoding) {
-      throw Exception(
-        'waitData has already been executed with a different ignoreContentEncoding value',
+      throw StateError(
+        'waitData has already been called with ignoreContentEncoding='
+        '$_waitDataMemoizerIgnoreContentEncodingArg; '
+        'cannot call again with ignoreContentEncoding=$ignoreContentEncoding',
       );
     }
 
@@ -115,8 +116,9 @@ class FetchResponseImpl implements FetchResponse {
   }) {
     if (_waitStructuredDataMemoizer.hasRun &&
         _waitStructuredDataMemoizerDecoderArg != decoder) {
-      throw Exception(
-        'waitStructuredData has already been executed with a different decoder value',
+      throw StateError(
+        'waitStructuredData has already been called with a different decoder; '
+        'cannot call again with a different decoder value',
       );
     }
 
@@ -130,13 +132,11 @@ class FetchResponseImpl implements FetchResponse {
           );
         }
 
-        structuredDataDecoder =
-            FetchUtilities.findBestDataCoder<StructuredDataDecoder>(
-              mimeType: contentMimeType,
-              dataCoders: options.structuredDataDecoders,
-              builtinsDataCoders:
-                  FetchBuiltins.structuredDataDecodersPerMimeType,
-            );
+        structuredDataDecoder = fetchFindBestDataCoder<StructuredDataDecoder>(
+          mimeType: contentMimeType,
+          dataCoders: options.structuredDataDecoders,
+          builtinsDataCoders: FetchBuiltins.structuredDataDecodersPerMimeType,
+        );
         if (structuredDataDecoder == null) {
           throw UnsupportedError(
             'Content type "$contentMimeType" has no known structured-data decoder',

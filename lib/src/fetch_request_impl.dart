@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: © 2023 - 2024 Anthony Champagne <dev@anthonychampagne.fr>
+// SPDX-FileCopyrightText: © 2023 - 2026 Anthony Champagne <dev@anthonychampagne.fr>
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
@@ -96,12 +96,11 @@ class FetchRequestImpl implements FetchRequest {
         );
       }
 
-      structuredDataEncoder =
-          FetchUtilities.findBestDataCoder<StructuredDataEncoder>(
-            mimeType: contentMimeType,
-            dataCoders: options.structuredDataEncoders,
-            builtinsDataCoders: FetchBuiltins.structuredDataEncodersPerMimeType,
-          );
+      structuredDataEncoder = fetchFindBestDataCoder<StructuredDataEncoder>(
+        mimeType: contentMimeType,
+        dataCoders: options.structuredDataEncoders,
+        builtinsDataCoders: FetchBuiltins.structuredDataEncodersPerMimeType,
+      );
       if (structuredDataEncoder == null) {
         throw UnsupportedError(
           'No known structured-data encoder for content type "$contentMimeType"',

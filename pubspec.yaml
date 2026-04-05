@@ -1,14 +1,14 @@
 name: ac_fetch
 description: An easy to use HTTP data fetcher with HTTP1/2 and integrated HTTP cache support
-version: 0.3.0
+version: 0.3.1
 repository: https://github.com/anthochamp/dart-fetch.git
 
 environment:
   sdk: ">=3.7.0 <4.0.0"
 
 dependencies:
-  ac_dart_essentials: ^0.2.1
-  ac_httpx_client: ^0.3.0
+  ac_dart_essentials: ^0.3.1
+  ac_httpx_client: ^0.3.1
   async: ^2.10.0
   freezed_annotation: ^3.0.0
 
